@@ -1,5 +1,7 @@
 # Code of Conduct
 
+OpenCADC is the GitHub Organization used by the Canadian Astronomy Data Centre (CADC) and the Canadian Advanced Network for Astronomical Research (CANFAR).
+
 ## Introduction
 
 This code of conduct applies to all on-line spaces where internal and external contributors interact with OpenCADC software, including Slack, discord, GitHub, Jira, Confluence, Service Manager (Atlassian), email, and any other communication channels used.
