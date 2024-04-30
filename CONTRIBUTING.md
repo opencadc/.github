@@ -10,9 +10,9 @@ Create issues when you discover any sort of problem with OpenCADC software.  If 
 
 ## Guilelines for Pull Requests
 
-In OpenCADC, the publicly released code lives in the main (or master) branch of the GitHub repository.  Therefore, contributions (modifications, additions) to OpenCADC software must be done through Pull Requests (PR).  While the pull request is open, OpenCADC maintainers will correspond with you through the PR.  Generally, before the PR is merged to the main branch, repositories will required:
+In OpenCADC, the publicly released code lives in the main (or master) branch of the GitHub repository.  Therefore, contributions (modifications, additions) to OpenCADC software must be done through Pull Requests (PR).  While the pull request is open, OpenCADC maintainers will correspond with you through the PR.  Generally, before the PR is merged to the main branch, repositories will require:
 * A code review with approval
-* Code style conventions to be met 
+* Code style conventions to be met
 * Automated tests to pass
 
 ### Java Development Guidelines
@@ -21,13 +21,13 @@ TODO
 * checkstyle
 * CI
 
-##3 Python Development Guidelines
+### Python Development Guidelines
 
 TODO
 * checkstyle
 * CI/code-coverage
 
-##3 Web Browser Application Development Guidelines
+### Web Browser Application Development Guidelines
 
 TODO
 
