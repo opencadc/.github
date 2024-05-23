@@ -8,7 +8,7 @@ We welcome contributions at OpenCADC!  If you have a fork or clone of any of the
 
 Create issues when you discover any sort of problem with OpenCADC software.  If you end up working on a solution for the issue, it should be referenced in the associated Pull Request.
 
-## Guilelines for Pull Requests
+## Guidelines for Pull Requests
 
 In OpenCADC, the publicly released code lives in the main (or master) branch of the GitHub repository.  Therefore, contributions (modifications, additions) to OpenCADC software must be done through Pull Requests (PR).  While the pull request is open, OpenCADC maintainers will correspond with you through the PR.  Generally, before the PR is merged to the main branch, repositories will require:
 * A code review with approval
