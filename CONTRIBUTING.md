@@ -36,7 +36,7 @@ A project, let's say `myapp` has the following structure:
 * `setup.cfg` - configuration file for `pip`. It contains the dependencies and the version of the application.
 * `README.md` - description of the project
 * `LICENCE` - the license file
-* `tox.ini` - `tox` configuration file
+* `tox.ini` - `tox` configuration file as required for projects of general interest, that are to be published to PyPI
 
 Subdirectories:
 * `myapp/myapp` - contains the Python source code and the unit test code. The directory can contain multiple subdirectories. Each directory might have a `tests` directory for the unit tests corresponding to the directory. `tests` directories might have `data` subdirectories containing the test data used in unit tests.
@@ -72,7 +72,7 @@ tox -e py311
 source .tox/py310/bin/activate
 ```
 
-Once the virtual environment has been activated, use `pip` to install required software. For ex:
+Once the virtual environment has been activated, use `pip` to install required software, e.g:
 ```commandline
 pip install -e ".[test]"
 ```
