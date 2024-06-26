@@ -97,7 +97,44 @@ Once a patch has been merged into the default branch it can, depending on the ur
 
 ### Web Browser Application Development Guidelines
 
-TODO
+Our web applications span many years and are made up of many common technologies such as Vanilla JavaScript, jQuery, CSS, and HTML, but we've also, in recent years, adopted ReactJS in our [Science Portal](https://github.com/opencadc/science-portal) application.
+
+Our Open Source web applications:
+- [Storage User Interface](https://github.com/opencadc/storage-ui.git) ([Try it](https://www.canfar.net/storage/list)) - Single Page Application (SPA) on top of the VOSpace APIs.
+- [Science Portal](https://github.com/opencadc/science-portal.git) ([Try it](https://www.canfar.net/science-portal) - authentication required) - Single Page Application (SPA) to manage interactive and batch sessions for the CANFAR Science Platform.
+- [Data Citation](https://github.com/opencadc/data-citation.git) ([Try it](https://www.canfar.net/citation/) - authentication required) - Single Page Application (SPA) to manage Digital Object Identifiers (DOI) for research datasets archived with CANFAR.
+
+#### Testing
+
+GitHub actions typically handle most QA level tasks.  Gradle still manages our Open Source web application offering:
+
+```bash
+$ gradlew -i clean build test
+```
+
+Running this should always return:
+
+<span style="color: green; font-weight: bold;">BUILD SUCCESSFUL</span>
+
+Testing in the Browser is important as well.  We include `Dockerfile`s with the web applications that can be used to build and run the applications in your Kubernetes cluster, or [docker-compose](https://docs.docker.com/compose/).
+
+#### Submitting changes
+
+Send a GitHub Pull Request to the appropriate [Repository](#web-browser-application-development-guidelines).  Ensure a Git Message is submitted with commits, and keep them small to ensure an accurate Code Review.
+
+#### Coding conventions
+
+We optimize for readability, and while not fully enforced at build time, CheckStyle is used in reviews and ensuring consistent style in the Java code.  See the [cadc-quality](https://github.com/opencadc/core/tree/master/cadc-quality) OpenCADC library for more information.  You can add the [cadc_checkstyle.xml](https://raw.githubusercontent.com/opencadc/core/master/cadc-quality/src/main/resources/cadc_checkstyle.xml) to your IDE's CheckStyle configuration to check as you type.
+
+##### JavaScript
+
+- No semi-colons at end of statement
+- Be consistent with quotes (i.e. pick single or double, and stick with it, or be consistent with the rest of the file)
+- Use Vanilla JavaScript when available
+- Don't Repeat Yourself (DRY)
+- Indent with two spaces
+- Please ALWAYS put spaces after list items and method parameters (`[1, 2, 3]`, **not** `[1,2,3]`), around operators (`x += 1`, **not** `x+=1`), and around hash arrows
+- Use `const` and `let`; avoid `var` unless there's a good reason for it
 
 ## Image (Container) Repositories
 
