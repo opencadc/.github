@@ -97,7 +97,7 @@ Once a patch has been merged into the default branch it can, depending on the ur
 
 ### Web Browser Application Development Guidelines
 
-Our web applications span many years and are made up of many common technologies such as Vanilla JavaScript, jQuery, CSS, and HTML, but we've also, in recent years, adopted ReactJS in our [Science Portal](https://github.com/opencadc/science-portal) application.
+Our web applications span many years and are made up of many common technologies such as vanilla JavaScript, jQuery, CSS, and HTML, but we've also, in recent years, adopted ReactJS in our [Science Portal](https://github.com/opencadc/science-portal) application.
 
 Our Open Source web applications:
 - [Storage User Interface](https://github.com/opencadc/storage-ui.git) ([Try it](https://www.canfar.net/storage/list)) - Single Page Application (SPA) on top of the VOSpace APIs.
@@ -128,9 +128,9 @@ We optimize for readability, and while not fully enforced at build time, CheckSt
 
 ##### JavaScript
 
-- No semi-colons at end of statement
+- No semicolons at end of statement
 - Be consistent with quotes (i.e. pick single or double, and stick with it, or be consistent with the rest of the file)
-- Use Vanilla JavaScript when available
+- Use vanilla JavaScript when available
 - Don't Repeat Yourself (DRY)
 - Indent with two spaces
 - Please ALWAYS put spaces after list items and method parameters (`[1, 2, 3]`, **not** `[1,2,3]`), around operators (`x += 1`, **not** `x+=1`), and around hash arrows
