@@ -21,9 +21,44 @@ In OpenCADC, the publicly released code lives in the main (or master) branch of 
 
 ### Java Development Guidelines
 
-TODO
-* checkstyle
-* CI
+Java code is licenced under the Affero GPL version 3 (AGPL-3.0) and each file originally created by CADC staff includes a standard bilingual copyright notice with `(C) Government of Canada ...`. Files originally created and contributed should be under the same license and may/should/usually contain their own suitable `(C)` claim; copyright is assumed to be assigned (to GoC) if the standard bilingual notice if included. **TBD**
+
+#### Tools
+We currently target Java 11 runtime (should be no problem with later versions); some build files specify minimum source compatibility of `11` and others are still at `1.8` (being updated gradually from downstream modules back to the core libraries).
+
+All java modules use `gradle` as the build tool and each repository includes the gradle wrapper for use in github workflows; it can also be used by developers directly (or note that the first run installs a complete gradle system in `$HOME/.gradle/wrapper/dists` which can be used directly). This is currently fixed at gradle-6.8.3 so build file style has to work with this version (see CI below).
+
+All java software modules use the standard `build.gradle` file and standard maven/gradle directory structure in order to minimise build file directives. The name of the module (directory) should match the name of the build product: library (jar file) and application (tar, war, docker image).
+
+#### Dependencies
+All java libraries are published to Maven Central under the <a href="https://repo.maven.apache.org/maven2/org/opencadc">org.opencadc</a> group ID. Build files include `mavenCentral` and `mavenLocal` repositories so developers can normally build against a combination of published libraries and their own versions of libraries that are installed locally (currently: `gradle install` will install a library into `$HOME/.m2/repository`). Other repostitories or mechanisms for including external java libs in the classpath are unlikely to be accepted.
+
+Java dependencies should be carefully curated to include direct dependencies on java libs and only rely on transitive dependencies for indirect dependencies. Exception: for external libraries (e.g. log4j, xerces and jdom2 xml parsers, spring-jdbc) it is preferrable to use the version specified by the core `cadc-util` library and _not_ declare any dependency on these even though they are used directly by the code. This allows for easier version upgrade (e.g. for security issues) and consistent use. For other external dependencies introduced elsewhere, care should be taken to consider future update scenarios and try to minimise the pain necessary to carry them out. The dependency list in all build files should be curated to remove unused dependencies and sometimes even block transitive dependencies from the runtime classpath.
+
+#### Code Style
+Java coding style is specified and validated using `checkstyle` via the <a href="https://github.com/opencadc/core/tree/main/cadc-quality">cadc-quality</a> library. Each repository includes this library in the test classpath and configures checkstyle via the repository `opencadc.gradle` file. Developers can run checkstyle locally using `gradle checkstyleMain` (we currently do not enforce checkstyle on test code **TBD**) to make sure they comply and **should** use the checkstyle configuration from `cadc-quality` to configure their development environment (IDE) where possible. 
+
+This is currently checkstyle-8.2 -- pretty old -- and has some defiencies that need to be addressed. In addition, `gradle javadoc` must have no errors and ideally no warnings (technical debt: most older code has lots of warnings). 
+
+The current code style checking really only covers small scale syntax and not larger scale code organisation and design. General principles:
+* clear code so comments are not needed or can be minimised
+* judicious comments to capture tricky details, especially intentionally ignored some detail
+* judicious comments to clarify larger scale logic in complex methods
+* constructor args for required values; final for immutable fields, prefer public fields when null-able
+* polymorphism: only when necessary
+* TODO: `ca.nrc.cadc` vs `org.opencadc` java packages
+* TODO: more general principles
+* TODO: improve checkstyle to avoid IDE-code-format-wars
+
+#### Continuous Integration
+Continuous Integration (CI) is used to validate pull requests in github (when PR is opened or new commits added). Reviewer(s) will usually not look at a PR when CI fails; it is the responsibility of the person who created the PR to fix CI issues or add a comment explaining it. For example, if a PR requires a new version of a library that has not been published yet, add a comment explaining that and then the reviewer can trigger the CI again once the library is published.
+
+Github CI is not currently used to publish java libraries or docker images. 
+
+#### Publishing
+Java libraries are published to Maven Central manually by a CADC staff member.
+
+Docker images are published (and signed) to `images.opencadc.org`  manually by a CADC staff member.
 
 ### Python Development Guidelines
 Related Python projects are grouped in repos, each repo containing a number of application projects: `cadctools`, `caom2tools`, `vostools`. A project of general interest might be published on `PyPI` (The Python Project Index).
