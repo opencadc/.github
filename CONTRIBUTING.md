@@ -21,7 +21,7 @@ In OpenCADC, the publicly released code lives in the main (or master) branch of 
 
 ### Java Development Guidelines
 
-Java code is licenced under the Affero GPL version 3 (AGPL-3.0) and each file originally created by CADC staff includes a standard bilingual copyright notice with `(C) Government of Canada ...`. Files originally created and contributed should be under the same license and may/should/usually contain their own suitable `(C)` claim; copyright is assumed to be assigned (to GoC) if the standard bilingual notice if included. **TBD**
+Java code is licenced under the Affero GPL version 3 (AGPL-3.0) and each file originally created by CADC staff includes a standard bilingual copyright notice with `(C) Government of Canada ...`; modifications to those files (e.g. bug fixes and minor enhancements) assume copyright assignment to the original holder. New modules (libaries or applications) created and contributed should be under the same license and may contain their own suitable `(C)` claim; copyright is assumed to be assigned (to GoC) if the standard bilingual notice is included. Copyright policy for new files contributed to existing modules: **TBD**.
 
 #### Tools
 We currently target Java 11 runtime (should be no problem with later versions); some build files specify minimum source compatibility of `11` and others are still at `1.8` (being updated gradually from downstream modules back to the core libraries).
@@ -42,12 +42,11 @@ This is currently checkstyle-8.2 -- pretty old -- and has some defiencies that n
 
 The current code style checking really only covers small scale syntax and not larger scale code organisation and design. General principles:
 * clear code so comments are not needed or can be minimised
-* judicious comments to capture tricky details, especially intentionally ignored some detail
+* judicious comments to capture tricky details
 * judicious comments to clarify larger scale logic in complex methods
 * constructor args for required values; final for immutable fields, prefer public fields when null-able
 * polymorphism: only when necessary
-* TODO: `ca.nrc.cadc` vs `org.opencadc` java packages
-* TODO: more general principles
+* in general, older code can be found in the `ca.nrc.cadc` java package and newer code in `org.opencadc`; consider renaming the base package if a major refactoring or version update is being done, but this is otherwise just cosmetic
 * TODO: improve checkstyle to avoid IDE-code-format-wars
 
 #### Continuous Integration
