@@ -19,7 +19,7 @@ Instead, please report them privately using one of the following methods:
 of the affected repository and click **"Report a vulnerability"** to open a confidential
 security advisory.
 2. **Email:** If private reporting is not enabled on a repository or you cannot use GitHub, 
-send an email to **[security@canfar.net](mailto:security@canfar.net)**.
+send an email to **[opencadc@gmail.com](mailto:opencadc@gmail.com)**.
 
 ### What to Include
 To help us triage and resolve the issue quickly, please include:
