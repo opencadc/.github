@@ -1,0 +1,46 @@
+name: 'Setup Java & Gradle with Maven Central Mirror'
+description: 'Checks out code, sets up Temurin JDK with Gradle caching, and configures a suitable Maven Central mirror'
+
+inputs:
+  java-version:
+    description: 'Java version to install (e.g. 11, 17, 21)'
+    required: false
+    default: '11'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK ${{ inputs.java-version }}
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: ${{ inputs.java-version }}
+        cache: 'gradle'
+
+    - name: Configure Maven Central Mirror
+      shell: bash
+      run: |
+        mkdir -p ~/.gradle/init.d
+        cat << 'EOF' > ~/.gradle/init.d/maven-mirror.gradle
+        allprojects {
+            buildscript {
+                repositories {
+                    maven { url "https://googleapis.com" }
+                }
+            }
+            repositories {
+                maven { url "https://googleapis.com" }
+            }
+        }
+        settingsEvaluated { settings ->
+            settings.pluginManagement {
+                repositories {
+                    maven { url "https://googleapis.com" }
+                    gradlePluginPortal()
+                }
+            }
+        }
+        EOF
